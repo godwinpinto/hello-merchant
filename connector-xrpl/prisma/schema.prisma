@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model UPN_SQUAREUP_MAPPING {
+  USM_ROW_ID String   @id @db.Char(20)
+  UUM_ROW_ID String   @db.Char(20)
+  URL_UUID   String   @db.VarChar(500)
+  ACTIVE     String   @default("Y") @db.Char(1)
+  CREATED_DT DateTime @db.Timestamp(0)
+  CREATED_BY String   @db.VarChar(50)
+  UPDATED_DT DateTime @db.Timestamp(0)
+  UPDATED_BY String   @db.VarChar(100)
+}
+
+model UPN_TRANSACTION_MASTER {
+  UTM_ROW_ID     String   @id @db.Char(20)
+  UUM_ROW_ID     String   @db.Char(20)
+  AMOUNT         String   @db.VarChar(10)
+  CURRENCY       String   @db.VarChar(5)
+  CHANNEL        String   @db.VarChar(10)
+  ACTIVE         String   @default("Y") @db.Char(1)
+  CREATED_DT     DateTime @db.Timestamp(0)
+  TRANSACTION_ID String?  @db.VarChar(256)
+}
+
+model UPN_USER_MASTER {
+  UUM_ROW_ID String   @id @db.Char(20)
+  USER_ID    String   @db.VarChar(35)
+  ROLE       String   @db.Char(1)
+  ACTIVE     String   @default("Y") @db.Char(1)
+  CREATED_DT DateTime @db.Timestamp(0)
+  CREATED_BY String   @db.VarChar(50)
+  UPDATED_DT DateTime @db.Timestamp(0)
+  UPDATED_BY String   @db.VarChar(100)
+
+  @@index([USER_ID], map: "UPN_USER_MASTER_USER_ID")
+}
+
+model UPN_XRPL_MAPPING {
+  UXM_ROW_ID String   @id @db.Char(20)
+  UUM_ROW_ID String   @db.Char(20)
+  XRPL_AC_NO String   @db.VarChar(35)
+  ACTIVE     String   @default("Y") @db.Char(1)
+  CREATED_DT DateTime @db.Timestamp(0)
+  CREATED_BY String   @db.VarChar(50)
+  UPDATED_DT DateTime @db.Timestamp(0)
+  UPDATED_BY String   @db.VarChar(100)
+}
