@@ -62,9 +62,11 @@ export const useUserStore = defineStore('userStore', () => {
     async function asyncSetUser() {
         try {
             let emailCookieValue = getCookie('email');
+            let userIdValue = getCookie('uum_row_id');
 
-            if(emailCookieValue){
+            if(emailCookieValue && userIdValue){
                 userInfo.value.email = emailCookieValue;
+                userInfo.value.userId=userIdValue
                 stepIndicator.value = 4
             }else {
                 stepIndicator.value = 0

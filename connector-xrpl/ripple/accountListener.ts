@@ -2,6 +2,7 @@ import xrpl, { AccountInfoRequest, Client, Wallet, xrpToDrops } from "xrpl";
 import { XRPL_NETWORK } from '../utils/constants'
 import WebSocket from 'ws'
 import { processNotification } from "../service/channelService";
+import { fetchDistinctAccounts } from "../repository/accountRepository";
 
 let socket: WebSocket;
 
@@ -13,9 +14,9 @@ export const startListeningAccounts = async () => {
 
     socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
 
-//    const subscribers = await fetchDistinctAccounts();
-    //const accountArray = subscribers.map((item: any) => item.XRPL_AC_NO).filter((account: any) => account.startsWith('r'));
-    const accountArray=["rDKH6NniQpqoAJNBh4bTf7y9rXigwkyZHa"]
+    const subscribers = await fetchDistinctAccounts();
+    const accountArray = subscribers.map((item: any) => item.XRPL_AC_NO).filter((account: any) => account.startsWith('r'));
+//    const accountArray=["rDKH6NniQpqoAJNBh4bTf7y9rXigwkyZHa"]
     console.log(accountArray)
     console.log(XRPL_NETWORK);
     socket.addEventListener('close', (event: any) => {
@@ -100,6 +101,15 @@ const pingpong = async () => {
     console.log("Pong!", response)
 }
 
+const addNewAccount=async()=>{
+    const subscribers = await fetchDistinctAccounts();
+    const accountArray = subscribers.map((item: any) => item.XRPL_AC_NO).filter((account: any) => account.startsWith('r'));
+    doSubscribe(accountArray);
+}
+
+setInterval(function () {
+    addNewAccount();
+}, 15 * 1000);
 
 /* setInterval(function () {
     pingpong()

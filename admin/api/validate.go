@@ -157,7 +157,11 @@ func Validate(w http.ResponseWriter, request *http.Request) {
 			return
 		}
 
-		fmt.Println("userBean after insert:", userBean)
+		userBean.UUMRowId = rowId
+		userBean.UserId = resp.Result.Sessions[0].Email
+
+		fmt.Println("userBean after insert:", userBean.UUMRowId)
+		fmt.Println("userBean after insert:", userBean.UserId)
 
 	}
 

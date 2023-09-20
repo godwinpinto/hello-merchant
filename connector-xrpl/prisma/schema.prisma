@@ -45,10 +45,16 @@ model UPN_USER_MASTER {
 model UPN_XRPL_MAPPING {
   UXM_ROW_ID String   @id @db.Char(20)
   UUM_ROW_ID String   @db.Char(20)
-  XRPL_AC_NO String   @db.VarChar(35)
+  XRPL_AC_NO String   @db.VarChar(500)
   ACTIVE     String   @default("Y") @db.Char(1)
   CREATED_DT DateTime @db.Timestamp(0)
   CREATED_BY String   @db.VarChar(50)
   UPDATED_DT DateTime @db.Timestamp(0)
   UPDATED_BY String   @db.VarChar(100)
+}
+
+model UPN_TRANSACTION_LOG {
+  UTL_ROW_ID String @id @db.Char(20)
+  UUM_ROW_ID String @db.Char(20)
+  LOG_DATA   String @db.VarChar(8000)
 }

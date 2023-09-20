@@ -76,3 +76,7 @@ type DashboardResponseStruct struct {
 type ConfigResponseStruct struct {
 	AcNo string `json:"ac_no"`
 }
+
+type RedactResponseStruct struct {
+	Data string `json:"data"`
+}

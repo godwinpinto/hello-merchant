@@ -16,14 +16,8 @@ exports.sendWebNotification = void 0;
 const pusher_1 = __importDefault(require("pusher"));
 const jsonpath_1 = __importDefault(require("jsonpath"));
 const xrpl_1 = require("xrpl");
-const snowflake_uuid_1 = require("snowflake-uuid");
 const accountRepository_1 = require("../repository/accountRepository");
-const generator = new snowflake_uuid_1.Worker(0, 1, {
-    workerIdBits: 5,
-    datacenterIdBits: 5,
-    sequenceBits: 12,
-});
-const sendWebNotification = (eventData, destination, metaInfo) => __awaiter(void 0, void 0, void 0, function* () {
+const sendWebNotification = (eventData, destination, metaInfo, uniqueId) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("destination", destination);
     const jsonData = JSON.parse(eventData);
     const transactionResult = jsonpath_1.default.query(jsonData, '$.engine_result')[0];
@@ -34,15 +28,14 @@ const sendWebNotification = (eventData, destination, metaInfo) => __awaiter(void
     const transactionHash = jsonpath_1.default.query(jsonData, '$.transaction.hash')[0];
     if (validated == true && transactionResult == "tesSUCCESS" && type == "transaction") {
         const currentDate = new Date();
-        const rowId = generator.nextId().toString();
         const dbObject = {
             ACTIVE: "Y",
             CREATED_DT: currentDate,
             AMOUNT: "" + (0, xrpl_1.dropsToXrp)(transactionAmount),
             CHANNEL: "Ripple",
             CURRENCY: "XRP",
-            UTM_ROW_ID: rowId,
-            UUM_ROW_ID: "1",
+            UTM_ROW_ID: uniqueId,
+            UUM_ROW_ID: destination,
             TRANSACTION_ID: transactionHash
         };
         (0, accountRepository_1.createTransaction)(dbObject);

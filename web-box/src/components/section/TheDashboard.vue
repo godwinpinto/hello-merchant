@@ -34,7 +34,8 @@ const newAmount = ref("");
 const pusher: any = inject('pusher');
 var channel = pusher.subscribe(import.meta.env.VITE_PUSHER_APP_CHANNEL);
 
-channel.bind(userInfo.value.email, function (data: any) {
+console.log("userInfo.value.userId",userInfo.value.userId)
+channel.bind(userInfo.value.userId, function (data: any) {
     console.log(userInfo.value.email)
     console.log(data)
     const parseInfo: any = JSON.parse(data.meta)

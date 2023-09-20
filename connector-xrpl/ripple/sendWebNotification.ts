@@ -2,16 +2,11 @@ import Pusher from "pusher";
 import jsonpath from "jsonpath";
 import { dropsToXrp } from "xrpl";
 import type { UPN_TRANSACTION_MASTER } from "@prisma/client";
-import { Worker } from 'snowflake-uuid';
 import {createTransaction} from '../repository/accountRepository'
 
-const generator = new Worker(0, 1, {
-    workerIdBits: 5,
-    datacenterIdBits: 5,
-    sequenceBits: 12,
-});
 
-export const sendWebNotification = async (eventData: any,destination:string,metaInfo:any): Promise<void> => {
+
+export const sendWebNotification = async (eventData: any,destination:string,metaInfo:any,uniqueId:string): Promise<void> => {
     console.log("destination",destination)
     const jsonData = JSON.parse(eventData);
     const transactionResult = jsonpath.query(jsonData, '$.engine_result')[0];
@@ -23,15 +18,14 @@ export const sendWebNotification = async (eventData: any,destination:string,meta
 
     if(validated==true && transactionResult=="tesSUCCESS" && type=="transaction"){
         const currentDate = new Date();
-        const rowId = generator.nextId().toString();
         const dbObject: UPN_TRANSACTION_MASTER = {
             ACTIVE: "Y",
             CREATED_DT: currentDate,
             AMOUNT: ""+dropsToXrp(transactionAmount),
             CHANNEL:"Ripple",
             CURRENCY:"XRP",
-            UTM_ROW_ID:rowId,
-            UUM_ROW_ID:"1",
+            UTM_ROW_ID:uniqueId,
+            UUM_ROW_ID:destination,
             TRANSACTION_ID:transactionHash
 
         };
@@ -56,3 +50,5 @@ export const sendWebNotification = async (eventData: any,destination:string,meta
         console.log("something was not right")
     }
 }
+
+

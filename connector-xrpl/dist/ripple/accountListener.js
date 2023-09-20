@@ -16,14 +16,15 @@ exports.doSubscribe = exports.startListeningAccounts = void 0;
 const constants_1 = require("../utils/constants");
 const ws_1 = __importDefault(require("ws"));
 const channelService_1 = require("../service/channelService");
+const accountRepository_1 = require("../repository/accountRepository");
 let socket;
 const AWAITING = {};
 let autoid_n = 0;
 const startListeningAccounts = () => __awaiter(void 0, void 0, void 0, function* () {
     socket = new ws_1.default('wss://s.altnet.rippletest.net:51233');
-    //    const subscribers = await fetchDistinctAccounts();
-    //const accountArray = subscribers.map((item: any) => item.XRPL_AC_NO).filter((account: any) => account.startsWith('r'));
-    const accountArray = ["rDKH6NniQpqoAJNBh4bTf7y9rXigwkyZHa"];
+    const subscribers = yield (0, accountRepository_1.fetchDistinctAccounts)();
+    const accountArray = subscribers.map((item) => item.XRPL_AC_NO).filter((account) => account.startsWith('r'));
+    //    const accountArray=["rDKH6NniQpqoAJNBh4bTf7y9rXigwkyZHa"]
     console.log(accountArray);
     console.log(constants_1.XRPL_NETWORK);
     socket.addEventListener('close', (event) => {
@@ -101,6 +102,14 @@ const pingpong = () => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield api_request({ command: "ping" });
     console.log("Pong!", response);
 });
+const addNewAccount = () => __awaiter(void 0, void 0, void 0, function* () {
+    const subscribers = yield (0, accountRepository_1.fetchDistinctAccounts)();
+    const accountArray = subscribers.map((item) => item.XRPL_AC_NO).filter((account) => account.startsWith('r'));
+    (0, exports.doSubscribe)(accountArray);
+});
+setInterval(function () {
+    addNewAccount();
+}, 15 * 1000);
 /* setInterval(function () {
     pingpong()
     if (socket.readyState == socket.OPEN) {
