@@ -68,7 +68,7 @@ Set the below environment variables in Vercel settings-> environment variables
 7. VITE_PANGEA_IPINTEL_TOKEN  (Pangea ipintel Token)
 8. VITE_PANGEA_EMBARGO_TOKEN  (Pangea embargo Token)
 9. VITE_PANGEA_AUTHN_URL  (Pangea AuthN hosted URL)
-10. VITE_PANGEA_REACT_TOKEN (Pangea Redact Token)
+10. VITE_PANGEA_REDACT_TOKEN (Pangea Redact Token)
 11. PANGEA_AUTHN_TOKEN (Pangea AuthN Token)
 12. PANGEA_DOMAIN  (Pangea Domain)
 13. DB_URL (TiDB URL)
