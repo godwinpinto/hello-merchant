@@ -68,18 +68,19 @@ Set the below environment variables in Vercel settings-> environment variables
 7. VITE_PANGEA_IPINTEL_TOKEN  (Pangea ipintel Token)
 8. VITE_PANGEA_EMBARGO_TOKEN  (Pangea embargo Token)
 9. VITE_PANGEA_AUTHN_URL  (Pangea AuthN hosted URL)
-10. PANGEA_AUTHN_TOKEN (Pangea AuthN Token)
-11. PANGEA_DOMAIN  (Pangea Domain)
-12. DB_URL (TiDB URL)
-13. DB_PORT=4000
-14. DB_NAME=UPN_DB
-15. DB_USER (TiDB User)
-16. DB_PASSWORD (TiDB password)
-17. VITE_PUSHER_APP_CHANNEL=HELLO_MERCHANT_BOX
-18. VITE_RIPPLE_ECHO_URL=/api
-19. VITE_REDIRECT_URI (The URL to redirect to)
-20. VITE_PUSHER_APP_CLUSTER=ap2
-21. VITE_PUSHER_APP_KEY (App Key from Pusher)
+10. VITE_PANGEA_REACT_TOKEN (Pangea Redact Token)
+11. PANGEA_AUTHN_TOKEN (Pangea AuthN Token)
+12. PANGEA_DOMAIN  (Pangea Domain)
+13. DB_URL (TiDB URL)
+14. DB_PORT=4000
+15. DB_NAME=UPN_DB
+16. DB_USER (TiDB User)
+17. DB_PASSWORD (TiDB password)
+18. VITE_PUSHER_APP_CHANNEL=HELLO_MERCHANT_BOX
+19. VITE_RIPPLE_ECHO_URL=/api
+20. VITE_REDIRECT_URI (The URL to redirect to)
+21. VITE_PUSHER_APP_CLUSTER=ap2
+22. VITE_PUSHER_APP_KEY (App Key from Pusher)
 
 ### admin
 1. Go to admin directory and type "vercel --prod" (post installing and configuring vercel cli)
@@ -96,17 +97,13 @@ Set the below environment variables in Vercel settings-> environment variables
 ### connector-xrpl
 1. Go to connector-xrpl and run "npm i" to install dependencies
 2. Set below environent variables in .env file in root directory
-  - 2.1. VITE_PANGEA_VAULT_SECRET_AC_NO  (Pangea Vault secret for account no)
-  - 2.2. VITE_PANGEA_REDACT_TOKEN  (Pangea Secure Audit Token)
-  - 2.3. VITE_PANGEA_VAULT_TOKEN  (Pangea vault Token)
-  - 2.4. PANGEA_DOMAIN  (Pangea Domain)
-  - 2.10. PORT=3001
-  - 2.11. DATABASE_URL=mysql://USER:PASSWORD@URL::PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt
-  - 2.12. PUSHER_APP_ID
-  - 2.13. PUSHER_KEY
-  - 2.14. PUSHER_SECRET
-  - 2.15. PUSHER_CLUSTER=ap2
-  - 2.16. PUSHER_CHANNEL=HELLO_MERCHANT_BOX
+  - 2.1. PORT=3001
+  - 2.2. DATABASE_URL=mysql://USER:PASSWORD@URL::PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt
+  - 2.3. PUSHER_APP_ID
+  - 2.4. PUSHER_KEY
+  - 2.5. PUSHER_SECRET
+  - 2.6. PUSHER_CLUSTER=ap2
+  - 2.7. PUSHER_CHANNEL=HELLO_MERCHANT_BOX
 3. Run npm run dev to start
 
 ### Limitation
