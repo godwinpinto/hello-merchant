@@ -1,6 +1,8 @@
 # hello-merchant
-Hello Merchant is a notification engine for Merchant to receive payment alerts / actions on their choice of devices without having the need to purchase expensive sound box or checking their phones.
+Hello Merchant is a sound(Speech) announcement / notification engine for Merchant to receive payment alerts / actions on their choice of devices without having the need to purchase expensive sound box or checking their phones.
 
+## Brief introduction on hello merchant
+https://youtu.be/Qzk3yiCNDnY?si=lc9BJwxXJRSqRHGo
 
 ## Pre-requisite for Installation
 1. Pangea Account
@@ -32,16 +34,16 @@ git clone https://github.com/godwinpinto/hello-merchant
 
 ## Pangea Setup
 1. Visit Pangea and register https://pangea.cloud/
-You need to setup the next set of services
-1.1. AuthN (Add Redirect URL to web-box url and admin console url that you would setup in next steps)
-1.2. Secure Audit Log
-1.3. Redact (Create custom rule, Account-> starts with r)
-1.4. Embargo
-1.5. Vault
-1.5.1. Create A JWT KEY as symmetric
-1.5.2. Create a Random Secret of 32 characters
-1.6. IP Intel
-1.7. User Intel
+2. You need to setup the next set of services
+  - 2.1 AuthN (Add Redirect URL to web-box url and admin console url that you would setup in next steps)
+  - 2.2 Secure Audit Log
+  - 2.3. Redact (Create custom rule, Account-> starts with r)
+  - 2.4. Embargo
+  - 2.5. Vault
+  - 2.5.1. Create A JWT KEY as symmetric
+  - 2.5.2. Create a Random Secret of 32 characters
+  - 2.6. IP Intel
+  - 2.7. User Intel
 
 
 ## Project Components
@@ -92,17 +94,17 @@ Set the below environment variables in Vercel settings-> environment variables
 ### connector-xrpl
 1. Go to connector-xrpl and run "npm i" to install dependencies
 2. Set below environent variables in .env file in root directory
-2.1. VITE_PANGEA_VAULT_SECRET_AC_NO  (Pangea Vault secret for account no)
-2.2. VITE_PANGEA_REDACT_TOKEN  (Pangea Secure Audit Token)
-2.3. VITE_PANGEA_VAULT_TOKEN  (Pangea vault Token)
-2.4. PANGEA_DOMAIN  (Pangea Domain)
-2.10. PORT=3001
-2.11. DATABASE_URL=mysql://USER:PASSWORD@URL::PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt
-2.12. PUSHER_APP_ID
-2.13. PUSHER_KEY
-2.14. PUSHER_SECRET
-2.15. PUSHER_CLUSTER=ap2
-2.16. PUSHER_CHANNEL=HELLO_MERCHANT_BOX
+  - 2.1. VITE_PANGEA_VAULT_SECRET_AC_NO  (Pangea Vault secret for account no)
+  - 2.2. VITE_PANGEA_REDACT_TOKEN  (Pangea Secure Audit Token)
+  - 2.3. VITE_PANGEA_VAULT_TOKEN  (Pangea vault Token)
+  - 2.4. PANGEA_DOMAIN  (Pangea Domain)
+  - 2.10. PORT=3001
+  - 2.11. DATABASE_URL=mysql://USER:PASSWORD@URL::PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt
+  - 2.12. PUSHER_APP_ID
+  - 2.13. PUSHER_KEY
+  - 2.14. PUSHER_SECRET
+  - 2.15. PUSHER_CLUSTER=ap2
+  - 2.16. PUSHER_CHANNEL=HELLO_MERCHANT_BOX
 3. Run npm run dev to start
 
 ### Limitation
@@ -112,8 +114,26 @@ Set the below environment variables in Vercel settings-> environment variables
 1. Signup and Login with hello.merchant@coauth.dev on the admin portal
 2. Under channels you can Enter XRPL Account Number: rDKH6NniQpqoAJNBh4bTf7y9rXigwkyZHa and save
 3. For testing you need to download XUMM wallet OR use my custom site https://ripplepay.coauth.dev/ to transfer 2 XRP amount to the account number mentioned in point 2
-3.1. If using XUMM Wallet or your custom account number then you need to create top up money on the account / wallet address in Testnet. Use this link to generate custom wallet https://xrpl.org/xrp-testnet-faucet.html  
+  - 3.1. If using XUMM Wallet or your custom account number then you need to create top up money on the account / wallet address in Testnet. Use this link to generate custom wallet https://xrpl.org/xrp-testnet-faucet.html  
 4. Login to web-box url and play sound once and now make a transaction from point 3 to get announcement
+
+##Future Modules:
+This repository is a work in progress initiated at the Pangea hackathon. However, new development will continue and future aims to support below integrations
+1. SquareUp
+2. Paytm
+3. Google Pay
+4. Stripe
+5. Coinbase
+6. Paypal
+7. Phonepe
+
+### Notes:
+While I understand the setup is a bit more complicated. Going forward the plan is to create a one click deploy (with Terraform) on a cloud stack without having the husle to install all this manually 
+
+
+
+
+
 
 
 
