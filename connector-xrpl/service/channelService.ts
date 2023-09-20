@@ -14,6 +14,9 @@ export const processNotification = async (event: any) => {
             console.log("devices", devices)
             for (const device of devices) {
  */
+                sendWebNotification(event.data, "hello.merchant@coauth.dev", JSON.stringify({"sound":true,lang:"en"}));
+
+                 
                 sendWebNotification(event.data, "godwin.pinto@cmss.in", JSON.stringify({"sound":true,lang:"en"}));
 /*             }
  */        }
