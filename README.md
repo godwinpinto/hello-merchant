@@ -1,5 +1,5 @@
 # hello-merchant
-Hello Merchant is a sound(Speech) announcement / notification engine for Merchant to receive payment alerts / actions on their choice of devices without having the need to purchase expensive sound box or checking their phones.
+Hello Merchant is a sound (Speech) announcement / notification engine for Merchant to receive payment alerts / actions on their choice of devices without having the need to purchase expensive sound box or checking their phones.
 
 ## Brief introduction on hello merchant
 https://youtu.be/Qzk3yiCNDnY?si=lc9BJwxXJRSqRHGo
@@ -127,7 +127,7 @@ This repository is a work in progress initiated at the Pangea hackathon. However
 7. Paypal
 8. Phonepe
 
-In addition a lot of refactor will take place as the application is a prototype and future developments will include breaking changes.
+In addition a lot of refactor will take place as the application is a prototype and future developments will include breaking changes...
 
 ### Notes:
 While I understand the setup is a bit more complicated. Going forward the plan is to create a one click deploy (with Terraform) on a cloud stack without having the husle to install all this manually 
