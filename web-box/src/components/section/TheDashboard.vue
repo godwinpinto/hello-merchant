@@ -109,7 +109,7 @@ const speakStart = (message: string, lang: string) => {
 }
 
 const playSoungTest = () => {
-    speakStart("Welcome to Web Box!", "en-UK");
+    speakStart("Welcome to Web Box!", "en-US");
 }
 
 const speak = (text: string, lang: String) => {
