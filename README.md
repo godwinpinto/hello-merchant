@@ -84,12 +84,14 @@ Set the below environment variables in Vercel settings-> environment variables
 ### admin
 1. Go to admin directory and type "vercel --prod" (post installing and configuring vercel cli)
 2. This will host the application for you on vercel cloud
-3. Don't forget to update the redirect URL in your AuthN Pangea panel once done
+3. Set the default redirect in PANGEA to <DOMAIN_NAME>/ (slash)
+4. Don't forget to update the redirect URL in your AuthN Pangea panel once application is hosted
 
 ### web-box
 1. Go to web-box directory and type "vercel --prod" (post installing and configuring vercel cli)
 2. This will host the application for you on vercel cloud
-3. Don't forget to update the redirect URL in your AuthN Pangea panel once done
+3. Set the redirect in PANGEA to <DOMAIN_NAME>/ (slash)
+4. Don't forget to update the redirect URL in your AuthN Pangea panel once application is hosted
 
 ### connector-xrpl
 1. Go to connector-xrpl and run "npm i" to install dependencies
@@ -117,9 +119,9 @@ Set the below environment variables in Vercel settings-> environment variables
   - 3.1. If using XUMM Wallet or your custom account number then you need to create top up money on the account / wallet address in Testnet. Use this link to generate custom wallet https://xrpl.org/xrp-testnet-faucet.html  
 4. Login to web-box url and play sound once and now make a transaction from point 3 to get announcement
 
-##Future Modules / Plans:
+##Future Modules:
 This repository is a work in progress initiated at the Pangea hackathon. However, new development will continue and future aims to support below integrations
-1.
+1. XRPL
 2. SquareUp
 3. Paytm
 4. Google Pay
@@ -127,7 +129,8 @@ This repository is a work in progress initiated at the Pangea hackathon. However
 6. Coinbase
 7. Paypal
 8. Phonepe
-This is a prototype and needs a lot of restructing of code which will be executed in due course.
+
+In addition a lot of refactor will take place as the application is a prototype and future developments will include breaking changes.
 
 ### Notes:
 While I understand the setup is a bit more complicated. Going forward the plan is to create a one click deploy (with Terraform) on a cloud stack without having the husle to install all this manually 
