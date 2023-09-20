@@ -117,15 +117,17 @@ Set the below environment variables in Vercel settings-> environment variables
   - 3.1. If using XUMM Wallet or your custom account number then you need to create top up money on the account / wallet address in Testnet. Use this link to generate custom wallet https://xrpl.org/xrp-testnet-faucet.html  
 4. Login to web-box url and play sound once and now make a transaction from point 3 to get announcement
 
-##Future Modules:
+##Future Modules / Plans:
 This repository is a work in progress initiated at the Pangea hackathon. However, new development will continue and future aims to support below integrations
-1. SquareUp
-2. Paytm
-3. Google Pay
-4. Stripe
-5. Coinbase
-6. Paypal
-7. Phonepe
+1.
+2. SquareUp
+3. Paytm
+4. Google Pay
+5. Stripe
+6. Coinbase
+7. Paypal
+8. Phonepe
+This is a prototype and needs a lot of restructing of code which will be executed in due course.
 
 ### Notes:
 While I understand the setup is a bit more complicated. Going forward the plan is to create a one click deploy (with Terraform) on a cloud stack without having the husle to install all this manually 
