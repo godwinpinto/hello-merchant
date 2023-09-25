@@ -98,13 +98,17 @@ Set the below environment variables in Vercel settings-> environment variables
 1. Go to connector-xrpl and run "npm i" to install dependencies
 2. Set below environent variables in .env file in root directory
   - 2.1. PORT=3001
-  - 2.2. DATABASE_URL=mysql://USER:PASSWORD@URL::PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt
+  - 2.2. DATABASE_URL=mysql://USER:PASSWORD@URL:PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt
   - 2.3. PUSHER_APP_ID
   - 2.4. PUSHER_KEY
   - 2.5. PUSHER_SECRET
   - 2.6. PUSHER_CLUSTER=ap2
   - 2.7. PUSHER_CHANNEL=HELLO_MERCHANT_BOX
-3. Run npm run dev to start
+3. Run "npm run dev" to start for run as docker image
+4. sudo docker build -t pangea-xrpl-connector .
+5. sudo docker run -e PORT=3010 -e DATABASE_URL="mysql://USER:PASSWORD@URL:PORT/UPN_DB?sslmode=require&sslcert=/etc/ssl/certs/ca-certificates.crt" -e PUSHER_APP_ID=XXXX -e PUSHER_KEY=XXXXX -e PUSHER_SECRET=XXXXX -e PUSHER_CLUSTER=ap2 -e PUSHER_CHANNEL=HELLO_MERCHANT_BOX -e HELLO_ADMIN_URL=https://hello-merchant-admin.coauth.dev -p 3310:3010 -d pangea-xrpl-connector
+
+
 
 ### Limitation
 1. Admin and web-box both run on vercel only, since its a mix of vuejs (for frontend) and golang application (for services)
